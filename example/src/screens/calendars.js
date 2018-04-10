@@ -22,7 +22,7 @@ export default class CalendarsScreen extends Component {
           onDayPress={this.onDayPress}
           style={styles.calendar}
           hideExtraDays
-          markedDates={{[this.state.selected]: {selected: true}}}
+          markedDates={{[this.state.selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'orange'}}}
         />
         <Text style={styles.text}>Calendar with marked dates and hidden arrows</Text>
         <Calendar
@@ -36,7 +36,7 @@ export default class CalendarsScreen extends Component {
             '2012-05-24': {selected: true, marked: true, dotColor: 'green'},
             '2012-05-25': {marked: true, dotColor: 'red'},
             '2012-05-26': {marked: true},
-            '2012-05-27': {disabled: true}
+            '2012-05-27': {disabled: true, activeOpacity: 0}
           }}
           // disabledByDefault={true}
           hideArrows={true}
@@ -92,9 +92,17 @@ export default class CalendarsScreen extends Component {
           markingType={'multi-dot'}
           markedDates={{
             '2012-05-08': {dots: [{key: 'vacation', color: 'blue', selectedDotColor: 'white'}, {key: 'massage', color: 'red', selectedDotColor: 'white'}], selected: true},
-            '2012-05-09': {dots: [{key: 'vacation', color: 'blue', selectedColor: 'red'}, {key: 'massage', color: 'red', selectedColor: 'blue'}], disabled: true}
+            '2012-05-09': {dots: [{key: 'vacation', color: 'blue', selectedDotColor: 'red'}, {key: 'massage', color: 'red', selectedDotColor: 'blue'}], disabled: true}
           }}
           hideArrows={false}
+        />
+        <Text style={styles.text}>Calendar with week numbers</Text>
+        <Calendar
+          onDayPress={this.onDayPress}
+          style={styles.calendar}
+          hideExtraDays
+          showWeekNumbers
+          markedDates={{[this.state.selected]: {selected: true}}}
         />
       </ScrollView>
     );

@@ -37,12 +37,13 @@ class CalendarListItem extends Component {
           monthFormat={this.props.monthFormat}
           dayComponent={this.props.dayComponent}
           disabledByDefault={this.props.disabledByDefault}
+          showWeekNumbers={this.props.showWeekNumbers}
         />);
     } else {
       const text = row.toString();
       return (
         <View style={[{height: this.props.calendarHeight}, this.style.placeholder]}>
-          <Text style={this.style.placeholderText}>{text}</Text>
+          <Text allowFontScaling={false} style={this.style.placeholderText}>{text}</Text>
         </View>
       );
     }
